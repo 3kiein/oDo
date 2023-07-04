@@ -18,10 +18,12 @@ const Day = styled.div`
 function Tracker({ todos }) {
 	const getDateKey = (date) => {
 		const year = date.getFullYear();
-		const month = date.getMonth();
+		const month = date.getMonth() + 1;
 		const day = date.getDate();
 		return `${year}-${month}-${day}`;
-	};
+    };
+    
+    console.log(todos);
 
 	const countCompletedTodos = (date) => {
 		const dateKey = getDateKey(date);
@@ -33,16 +35,10 @@ function Tracker({ todos }) {
 
 	const renderCalendar = () => {
 		const currentDate = new Date();
-		const startDate = new Date(
-			currentDate.getFullYear(),
-			currentDate.getMonth(),
-			1
-		);
-		const endDate = new Date(
-			currentDate.getFullYear(),
-			currentDate.getMonth() + 1,
-			0
-		);
+		const currentYear = currentDate.getFullYear();
+		const currentMonth = currentDate.getMonth();
+		const startDate = new Date(currentYear, currentMonth, 1);
+		const endDate = new Date(currentYear, currentMonth + 1, 0);
 		const calendar = [];
 
 		let date = new Date(startDate);
@@ -71,7 +67,10 @@ function Tracker({ todos }) {
 
 	return (
 		<div>
-			<h2>Todo Tracker</h2>
+			<h2>
+				{`${new Date().getFullYear()}년 ${new Date().getMonth() + 1}월`} Todo
+				Tracker
+			</h2>
 			<Calendar>{renderCalendar()}</Calendar>
 		</div>
 	);

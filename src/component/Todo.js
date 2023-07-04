@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
 const TodoContainer = styled.div`
@@ -30,7 +30,7 @@ const TodoItem = styled.div`
 	display: flex;
 	align-items: center;
 	margin-bottom: 5px;
-	cursor: ${({ isEditable }) => (isEditable ? "text" : "pointer")};
+	background-color: ${({ isToday }) => (isToday ? "yellowgreen" : "white")};
 `;
 
 const TodoText = styled.span`
@@ -100,8 +100,20 @@ const DeleteSelectedButton = styled.button`
 	margin-top: 10px;
 `;
 
-function Todo({ todos, setTodos }) {
+function Todo() {
+	const [todos, setTodos] = useState([]);
 	const [inputValue, setInputValue] = useState("");
+
+	useEffect(() => {
+		const storedTodos = localStorage.getItem("todos");
+		if (storedTodos) {
+			setTodos(JSON.parse(storedTodos));
+		}
+	}, []);
+
+	useEffect(() => {
+		localStorage.setItem("todos", JSON.stringify(todos));
+	}, [todos]);
 
 	const handleInputChange = (event) => {
 		setInputValue(event.target.value);
@@ -115,6 +127,7 @@ function Todo({ todos, setTodos }) {
 				isEditable: false,
 				isChecked: false,
 				isCompleted: false,
+				date: new Date().toISOString().slice(0, 10),
 			};
 			setTodos([...todos, newTodo]);
 			setInputValue("");
@@ -154,8 +167,6 @@ function Todo({ todos, setTodos }) {
 		setTodos(updatedTodos);
 	};
 
-	// 아 토할 것 같음
-
 	const handleCheckboxChange = (id) => {
 		const updatedTodos = todos.map((todo) =>
 			todo.id === id ? { ...todo, isChecked: !todo.isChecked } : todo
@@ -187,7 +198,11 @@ function Todo({ todos, setTodos }) {
 				<TodoButton onClick={handleAddTodo}>Add</TodoButton>
 			</TodoContainer>
 			{todos.map((todo) => (
-				<TodoItem key={todo.id} isEditable={todo.isEditable}>
+				<TodoItem
+					key={todo.id}
+					isEditable={todo.isEditable}
+					isToday={todo.date === new Date().toISOString().slice(0, 10)}
+				>
 					<TodoCheckbox
 						type="checkbox"
 						checked={todo.isChecked || false}

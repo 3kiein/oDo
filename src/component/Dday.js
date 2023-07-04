@@ -84,6 +84,13 @@ const DDayComponent = () => {
 	};
 
 	useEffect(() => {
+		const savedDDay = localStorage.getItem("dDay");
+		if (savedDDay) {
+			setDDay(new Date(savedDDay));
+		}
+	}, []);
+
+	useEffect(() => {
 		if (dDay) {
 			const sevenDaysBefore = new Date(dDay);
 			sevenDaysBefore.setDate(dDay.getDate() - 7);
@@ -95,6 +102,7 @@ const DDayComponent = () => {
 			hundredDaysBefore.setDate(dDay.getDate() - 100);
 
 			setDDayList([sevenDaysBefore, thirtyDaysBefore, hundredDaysBefore]);
+			localStorage.setItem("dDay", dDay.toISOString());
 		}
 	}, [dDay]);
 
