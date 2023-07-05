@@ -1,18 +1,19 @@
-import { styled } from "styled-components";
+import styled from "styled-components";
+
+const StyledHeader = styled.header`
+	display: flex;
+	justify-content: center;
+
+	img {
+		width: 30vw;
+		padding: 1rem;
+	}
+`;
 
 export default function Header() {
-	const Header = styled.header`
-		display: flex;
-		justify-content: center;
-
-		img {
-			width: 30vw;
-			padding: 2rem;
-		}
-	`;
 	return (
-		<Header>
+		<StyledHeader>
 			<img src="/logo.png" alt="logo" />
-		</Header>
+		</StyledHeader>
 	);
 }

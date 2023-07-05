@@ -1,11 +1,16 @@
 body {
-  font-family: 'IBM Plex Sans KR', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  display: flex;
-  flex-direction: column;
+	font-family: "IBM Plex Sans KR", sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	display: flex;
+	flex-direction: column;
 }
 
 code {
-  font-family: 'IBM Plex Sans KR', sans-serif;
+	font-family: "IBM Plex Sans KR", sans-serif;
+}
+
+* {
+	font-size: 10px;
+	color: #383838;
 }

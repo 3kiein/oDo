@@ -1,9 +1,31 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import styled from "styled-components";
 import Header from "./component/Header";
 import Todo from "./component/Todo";
 import Dday from "./component/Dday";
 import Tracker from "./component/Tracker";
+
+const Container = styled.div`
+	display: flex;
+`;
+
+const Aside = styled.aside`
+	flex: 1;
+	flex-basis: 33%;
+	max-width: 33%;
+	margin: 20px;
+	height: 60vh;
+`;
+
+const Content = styled.div`
+	flex: 2;
+	flex-basis: 66%;
+	max-width: 66%;
+`;
+
+const DdayContainer = styled.div`
+	margin-bottom: 20px;
+`;
 
 function App() {
 	const storedTodos = localStorage.getItem("todos");
@@ -16,14 +38,20 @@ function App() {
 	}, [todos]);
 
 	return (
-		<BrowserRouter>
+		<>
 			<Header />
-			<Routes>
-				<Route path="/" element={<Todo todos={todos} setTodos={setTodos} />} />
-				<Route path="/d" element={<Dday />} />
-				<Route path="/tracker" element={<Tracker todos={todos} />} />
-			</Routes>
-		</BrowserRouter>
+			<Container>
+				<Aside>
+					<DdayContainer>
+						<Dday />
+					</DdayContainer>
+					<Tracker todos={todos} />
+				</Aside>
+				<Content>
+					<Todo todos={todos} setTodos={setTodos} />
+				</Content>
+			</Container>
+		</>
 	);
 }
 
