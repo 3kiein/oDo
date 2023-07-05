@@ -46,7 +46,7 @@ const TodoButton = styled.button`
 `;
 
 const TodoItemWrapper = styled.section`
-	height: 51vh;
+	height: 60vh;
 	overflow-y: scroll;
 	-ms-overflow-style: none; /* IE 및 Edge용 스크롤바 스타일 숨김 */
 	scrollbar-width: none; /* Firefox 용 스크롤바 스타일 숨김 */

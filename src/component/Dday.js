@@ -29,7 +29,7 @@ const DatePicker = styled.input`
 `;
 
 const Button = styled.button`
-font-size: 14px;
+	font-size: 14px;
 	font-weight: 900;
 	margin-left: 10px;
 	padding: 10px 20px;
@@ -46,10 +46,12 @@ font-size: 14px;
 `;
 
 const Message = styled.p`
-	padding: 24px;
+	padding: 5px 24px;
 	font-size: 16px;
 	color: #2b9b46;
 	font-weight: 900;
+
+	${({ isFirst }) => isFirst && `padding-top: 20px;`}
 `;
 
 const DDayList = styled.ul`
@@ -68,6 +70,7 @@ const DDayComponent = ({ isPast, title, date }) => {
 	const [dDay, setDDay] = useState(null);
 	const [dDayList, setDDayList] = useState([]);
 	const [isMobileView, setIsMobileView] = useState(false);
+	const [daysDifference, setDaysDifference] = useState(null); // 추가: 오늘로부터 D-day까지의 일 수
 
 	const handleFormSubmit = (event) => {
 		event.preventDefault();
@@ -112,6 +115,9 @@ const DDayComponent = ({ isPast, title, date }) => {
 
 	useEffect(() => {
 		if (dDay) {
+			const daysDifference = calculateDaysDifference(dDay, new Date()); // 오늘로부터 D-day까지의 일 수 계산
+			setDaysDifference(daysDifference);
+
 			const sevenDaysBefore = new Date(dDay);
 			sevenDaysBefore.setDate(dDay.getDate() - 7);
 
@@ -164,7 +170,9 @@ const DDayComponent = ({ isPast, title, date }) => {
 			)}
 			{dDay ? (
 				<>
+					<Message isFirst>Until</Message>
 					<Message>{getFormattedDate(dDay)}</Message>
+					{daysDifference !== null && <Message>D - {daysDifference}</Message>}
 					<DDayList>{renderDDateList()}</DDayList>
 				</>
 			) : (

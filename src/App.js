@@ -4,9 +4,11 @@ import Header from "./component/Header";
 import Todo from "./component/Todo";
 import Dday from "./component/Dday";
 import Tracker from "./component/Tracker";
+import Pomodoro from "./component/Pomodoro";
 
 const Container = styled.div`
 	display: flex;
+	min-height: 88vh;
 `;
 
 const Aside = styled.aside`
@@ -50,6 +52,7 @@ function App() {
 				<Content>
 					<Todo todos={todos} setTodos={setTodos} />
 				</Content>
+				<Pomodoro />
 			</Container>
 		</>
 	);
