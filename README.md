@@ -4,26 +4,4 @@
 
 # oDo
 <hr>
-> todo, D-day, Tracker, Pomodoro
-
-## structure
-<hr>
-- oDo
-  ┣ public
-  ┃  ┣ index.html
-  ┃  ┗ logo.png
-  ┣ src
-  ┃  ┣ component
-  ┃  ┃  ┣ Dday.js
-  ┃  ┃  ┣ Header.js
-  ┃  ┃  ┣ Pomodoro.js
-  ┃  ┃  ┣ Todo.js
-  ┃  ┃  ┗ Tracker.js
-  ┃  ┣ style
-  ┃  ┃  ┣ index.css
-  ┃  ┃  ┗ reset.css
-  ┃  ┣ App.js
-  ┃  ┗ index.js
-  ┣ README.md
-  ┣ package-lock.json
-  ┗ package.json
+>todo, D-day, Tracker, Pomodoro
