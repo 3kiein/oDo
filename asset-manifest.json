@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/3kiein/oDo/static/css/main.d8b9159e.css",
+    "main.js": "/3kiein/oDo/static/js/main.a09acc0c.js",
+    "index.html": "/3kiein/oDo/index.html",
+    "main.d8b9159e.css.map": "/3kiein/oDo/static/css/main.d8b9159e.css.map",
+    "main.a09acc0c.js.map": "/3kiein/oDo/static/js/main.a09acc0c.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d8b9159e.css",
+    "static/js/main.a09acc0c.js"
+  ]
+}
