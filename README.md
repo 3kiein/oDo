@@ -4,4 +4,4 @@
 
 # oDo
 <hr>
->todo, D-day, Tracker, Pomodoro
+todo, D-day, Tracker, Pomodoro
