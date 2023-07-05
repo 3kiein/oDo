@@ -3,5 +3,3 @@
 </p>
 
 # oDo
-<hr>
-todo, D-day, Tracker, Pomodoro
